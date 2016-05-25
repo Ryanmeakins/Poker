@@ -58,7 +58,7 @@ public class Deck {
 	 }
 	 
 	 public void betterShuffle() {  // Fisher-Yates shuffle
-		 int i,j,k;
+		 int i,j;
 		 
 		 for ( i = NUMCARDS-1; i > 0 ; i-- ){
 			 j = (int) ( i * Math.random() );

@@ -8,6 +8,12 @@ public class Test {
 		foo.betterShuffle();
 		System.out.println(foo);
 		System.out.println(foo.deal());
+		
+		Player bob = new Player("Bob", 2);
+		bob.Deal(foo);
+		
+		bob.DisplayHand();
+		
 	}
 
 }

@@ -9,4 +9,16 @@ public class Player {
 		this.handSize = handSize;
 		hand = new Card[handSize];
 	}
+	
+	public void Deal( Deck curDeck ) {
+		for( int i = 0; i < handSize; i++ ) {
+			hand[i] = curDeck.deal();
+		}
+	}
+	
+	public void DisplayHand() {
+		for( int i = 0; i < handSize; i++ ) {
+			System.out.println( hand[i] );
+		}	
+	}
 }
