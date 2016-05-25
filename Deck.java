@@ -56,4 +56,18 @@ public class Deck {
 
 	     currentCard = 0;   // Reset current card to deal from top of deck
 	 }
+	 
+	 public void betterShuffle() {  // Fisher-Yates shuffle
+		 int i,j,k;
+		 
+		 for ( i = NUMCARDS-1; i > 0 ; i-- ){
+			 j = (int) ( i * Math.random() );
+			 
+			 Card tmp = deckOfCards[i];
+	         deckOfCards[i] = deckOfCards[j];
+	         deckOfCards[j] = tmp;
+		 }
+		 
+		 currentCard = 0;   // Reset current card to deal from top of deck
+	 }
 }

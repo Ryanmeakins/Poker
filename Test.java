@@ -5,7 +5,7 @@ public class Test {
 		Deck foo = new Deck();
 		System.out.println(foo);
 		System.out.println(foo.deal());
-		foo.shuffle(1);
+		foo.betterShuffle();
 		System.out.println(foo);
 		System.out.println(foo.deal());
 	}
