@@ -1,52 +1,88 @@
-
 public class Card {
-    public static final int SPADE   = 4;
-    public static final int HEART   = 3;
-    public static final int CLUB    = 2;
-    public static final int DIAMOND = 1;
-  
-    private static final String[] Suit = { "*", "d", "c", "h", "s"};
-    private static final String[] Rank = { "*", "*", "2", "3", "4",
- 			   "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
-  
-    private byte cardSuit;
-    private byte cardRank;
-  
-    public Card( int suit, int rank )
-    {
-    	if ( rank == 1 )
-    		cardRank = 14;     // Give Ace the rank 14
-    	else
-    		cardRank = (byte) rank;
-  
-    	cardSuit = (byte) suit;
-    }
-  
-    public int suit()
-    {
-    	return ( cardSuit );	// This is a shorthand for:
- 				      			//   this.cardSuit
-    }
-  
-    public String suitStr()
-    {
-    	return( Suit[ cardSuit ] );		// This is a shorthand for:
-    									//   this.Suit[ this.cardSuit ]
-    }
-  
-    public int rank()
-    {
-    	return ( cardRank );
-    }
-  
-    public String rankStr()
-    {
-    	return ( Rank[ cardRank ] );
-    }
-  
-  
-    public String toString()
-    {
-    	return ( Rank[ cardRank ] + Suit[ cardSuit ] );
-    }
+   public enum Suit {
+      CLUB("Club"),
+      DIAMOND("Diamond"),
+      SPADE("Spade"),
+      HEART("Heart");
+ 
+      private final String mNiceName;
+      private Suit(final String niceName) {
+         mNiceName = niceName;
+      }
+ 
+      public String niceName() {
+         return mNiceName;
+      }
+   }
+   public enum Rank {
+      ACE(14),
+      TWO(2),
+      THREE(3),
+      FOUR(4),
+      FIVE(5),
+      SIX(6),
+      SEVEN(7),
+      EIGHT(8),
+      NINE(9),
+      TEN(10),
+      JACK(11),
+      QUEEN(12),
+      KING(13);
+ 
+      private final int mValue;
+ 
+      private Rank(final int value) {
+         mValue = value;
+      }
+ 
+      public int value() {
+         return mValue;
+      }
+   }
+ 
+   private final Suit mSuit;
+   private final Rank mRank;
+ 
+   public Card(final Suit suit, final Rank rank) {
+      mSuit = suit;
+      mRank = rank;
+   }
+ 
+   public Suit suit() {
+      return mSuit;
+   }
+ 
+   public Rank rank() {
+      return mRank;
+   }
+ 
+   public String toString() {
+      return ( mRank.name() + " of " + mSuit.niceName() + "s" );
+   }
+   
+   /*public String toString() {
+	   return ( mRank.name() + mSuit.niceName() );
+   }*/
+   
+   public int compareTo(final Card other) {
+	   if (other == null) {
+		   throw new IllegalArgumentException("Null card");
+	   }
+	 
+	   if (other.mRank.value() > this.mRank.value()) {
+		   return -1;
+	   }
+	   if (other.mRank.value() < this.mRank.value()) {
+	       return 1;
+	   }
+	 
+	   if (other.mSuit.ordinal() > this.mSuit.ordinal()) {
+	      return -1;
+	   }
+	   if (other.mSuit.ordinal() < this.mSuit.ordinal()) {
+	      return 1;
+	   }
+	 
+	      return 0;
+	   }
 }

@@ -7,8 +7,8 @@ public class Deck {
 	public Deck() {
 		deckOfCards = new Card[NUMCARDS];
 		int i = 0;
-		for(int suit = Card.DIAMOND; suit <= Card.SPADE; suit++ ){
-			for(int rank = 1; rank <= 13; rank++){
+		for( Card.Suit suit : Card.Suit.values() ){
+			for( Card.Rank rank : Card.Rank.values() ){
 				deckOfCards[i++] = new Card(suit, rank);
 			}
 		}

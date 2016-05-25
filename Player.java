@@ -17,8 +17,10 @@ public class Player {
 	}
 	
 	public void DisplayHand() {
+		System.out.println( name );
 		for( int i = 0; i < handSize; i++ ) {
-			System.out.println( hand[i] );
+			System.out.print( hand[i] + " ");
 		}	
+		System.out.println();
 	}
 }

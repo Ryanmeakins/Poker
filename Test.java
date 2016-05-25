@@ -10,9 +10,13 @@ public class Test {
 		System.out.println(foo.deal());
 		
 		Player bob = new Player("Bob", 2);
+		Player sue = new Player("Sue", 2);
 		bob.Deal(foo);
+		sue.Deal(foo);
+		
 		
 		bob.DisplayHand();
+		sue.DisplayHand();
 		
 	}
 
