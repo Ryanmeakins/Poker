@@ -23,4 +23,8 @@ public class Player {
 		}	
 		System.out.println();
 	}
+	
+	public Card[] getHand() {
+		return hand;
+	}
 }

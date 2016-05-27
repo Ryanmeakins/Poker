@@ -1,9 +1,10 @@
+
 public class Card {
    public enum Suit {
-      CLUB("Club"),
-      DIAMOND("Diamond"),
-      SPADE("Spade"),
-      HEART("Heart");
+      CLUB("c"),
+      DIAMOND("d"),
+      SPADE("s"),
+      HEART("h");
  
       private final String mNiceName;
       private Suit(final String niceName) {
@@ -15,19 +16,19 @@ public class Card {
       }
    }
    public enum Rank {
-      ACE(14),
-      TWO(2),
-      THREE(3),
-      FOUR(4),
-      FIVE(5),
-      SIX(6),
-      SEVEN(7),
-      EIGHT(8),
-      NINE(9),
-      TEN(10),
-      JACK(11),
-      QUEEN(12),
-      KING(13);
+      A(14),
+      u2(2),
+      u3(3),
+      u4(4),
+      u5(5),
+      u6(6),
+      u7(7),
+      u8(8),
+      u9(9),
+      u10(10),
+      J(11),
+      Q(12),
+      K(13);
  
       private final int mValue;
  
@@ -38,6 +39,9 @@ public class Card {
       public int value() {
          return mValue;
       }
+
+
+
    }
  
    private final Suit mSuit;
@@ -57,7 +61,7 @@ public class Card {
    }
  
    public String toString() {
-      return ( mRank.name() + " of " + mSuit.niceName() + "s" );
+      return ( mRank.name() + mSuit.niceName() + "," );
    }
    
    /*public String toString() {
