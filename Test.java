@@ -52,6 +52,27 @@ public class Test {
 		house[4] = new Card( Card.Suit.CLUB, Card.Rank.THREE);
 		
 		
+		Card[] three = new Card[5];
+		three[0] = new Card( Card.Suit.CLUB, Card.Rank.K);
+		three[1] = new Card( Card.Suit.HEART, Card.Rank.THREE);
+		three[2] = new Card( Card.Suit.DIAMOND, Card.Rank.A);
+		three[3] = new Card( Card.Suit.SPADE, Card.Rank.THREE);
+		three[4] = new Card( Card.Suit.CLUB, Card.Rank.THREE);
+		
+		Card[] twop = new Card[5];
+		twop[0] = new Card( Card.Suit.CLUB, Card.Rank.A);
+		twop[1] = new Card( Card.Suit.HEART, Card.Rank.THREE);
+		twop[2] = new Card( Card.Suit.DIAMOND, Card.Rank.A);
+		twop[3] = new Card( Card.Suit.SPADE, Card.Rank.K);
+		twop[4] = new Card( Card.Suit.CLUB, Card.Rank.THREE);
+		
+		Card[] pair = new Card[5];
+		pair[0] = new Card( Card.Suit.CLUB, Card.Rank.FOUR);
+		pair[1] = new Card( Card.Suit.HEART, Card.Rank.THREE);
+		pair[2] = new Card( Card.Suit.DIAMOND, Card.Rank.A);
+		pair[3] = new Card( Card.Suit.SPADE, Card.Rank.K);
+		pair[4] = new Card( Card.Suit.CLUB, Card.Rank.THREE);
+		
 		int valBob = PokerHand.handValue( bob.getHand() );
 		System.out.println( "\nBob's value " + valBob );
 		
@@ -66,6 +87,15 @@ public class Test {
 		
 		int valStraight = PokerHand.handValue( straight );
 		System.out.println( "Straight value " + valStraight );
+		
+		int valThree = PokerHand.handValue( three );
+		System.out.println( "Threes value " + valThree );
+		
+		int valTwop = PokerHand.handValue( twop );
+		System.out.println( "Twop value " + valTwop );
+		
+		int valPair = PokerHand.handValue( pair );
+		System.out.println( "pair value " + valPair );
 	}
 
 }

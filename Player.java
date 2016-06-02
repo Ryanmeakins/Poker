@@ -29,20 +29,20 @@ public class Player {
 		return hand;
 	}
 	
-	public void setStack(int stack) {
-		 this.stack  = stack;
-	}
-	
-	public int getStack() {
-		return ( stack );
-	}
-	
-	public void bet( int amount ) {
-		if( amount > stack ) {
-			throw new IllegalArgumentException("Not enough money");
-		}
-		else {
-			stack -= amount;
-		}
-	}
+	public void adjustStack(int delta) {
+        this.stack += delta;
+   }
+  
+   public int getStack() {
+       return ( stack );
+   }
+  
+   public void bet( int amount ) {
+       if( amount > stack ) {
+           throw new IllegalArgumentException("Not enough money");
+       }
+       else {
+           adjustStack(amount * -1);
+       }
+   }
 }

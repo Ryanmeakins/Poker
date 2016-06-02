@@ -23,6 +23,15 @@ public class PokerHand {
 		else if( isStraight( hand ) ) {
 			val = STRAIGHT;
 		}
+		else if( isSet( hand ) ) {
+			val = SET;
+		}
+		else if( isTwop( hand ) ) {
+			val = TWOP;
+		}
+		else if( isPair( hand ) ) {
+			val = PAIR;
+		}
 		return val;
 	}
 	
@@ -126,12 +135,115 @@ public class PokerHand {
 
 	     return a || b ;
 	 }
+	 
+	 public static boolean isSet( Card[] hand ) {
+		 boolean a, b, c;
+
+		 if ( hand.length != 5 ) {
+			 return( false );
+		 }
+
+	     if ( isFours(hand) || isFullHouse(hand) ) {
+	    	 return( false );        // hand is better than 3 of a kind     
+	     }
+
+	     sortByRank(hand);
+
+	     /*
+	         Check for: x x x a b
+		 */       
+	     a = hand[0].rank() == hand[1].rank() &&                  
+	         hand[1].rank() == hand[2].rank() ;
+
+	     /*
+	         Check for: a x x x b
+		 */
+	     b = hand[1].rank() == hand[2].rank() &&
+	         hand[2].rank() == hand[3].rank() ;
+
+	     /*
+	         Check for: a b x x x
+		 */
+	     c = hand[2].rank() == hand[3].rank() &&
+	         hand[3].rank() == hand[4].rank() ;
+
+	     return( a || b || c );
+	 }
+	 
+	 public static boolean isTwop( Card[] hand ) {
+	      boolean a, b, c;
+
+	      if ( hand.length != 5 ) {
+	         return(false);
+	      }
+
+	      if ( isFours(hand) || isFullHouse(hand) || isSet(hand) ) {
+	         return(false);        // better than twop  
+	      }
+
+	      sortByRank(hand);
+
+	      /*
+	         Checking: a a  b b x
+		  */                       
+	      a = hand[0].rank() == hand[1].rank() &&
+	          hand[2].rank() == hand[3].rank() ;
+
+	      /* ------------------------------
+	         Checking: a a x  b b
+		  */
+	      b = hand[0].rank() == hand[1].rank() &&
+	          hand[3].rank() == hand[4].rank() ;
+
+	      /*
+	         Checking: x a a  b b
+	      */
+	      c = hand[1].rank() == hand[2].rank() &&
+	          hand[3].rank() == hand[4].rank() ;
+
+	      return( a || b || c );
+	 }
+	 
+	 public static boolean isPair( Card[] hand ) {
+		 boolean a, b, c, d;
+
+	     if ( hand.length != 5 ) {
+	         return(false);
+	     }
+
+	     if ( isFours(hand) || isFullHouse(hand) || isSet(hand) || isTwop(hand) ) {
+	         return(false);        // better than pair   
+	     }
+
+	     sortByRank(hand);
+
+	     /*
+	         Checking: a a x y z
+		 */                            
+	     a = hand[0].rank() == hand[1].rank() ;
+
+	     /*
+	         Checking: x a a y z
+		 */
+	     b = hand[1].rank() == hand[2].rank() ;
+
+	     /*
+	         Checking: x y a a z
+		 */
+	     c = hand[2].rank() == hand[3].rank() ;
+
+	     /*
+	         Checking: x y z a a
+		 */
+	     d = hand[3].rank() == hand[4].rank() ;
+
+	     return( a || b || c || d );
+	 }
 	
-	public static void sortBySuit( Card[] hand ) {
-		int i, j, min_j;
+	 public static void sortBySuit( Card[] hand ) {
+		 int i, j, min_j;
 		
-		for ( i = 0 ; i < hand.length ; i ++ )
-	      {
+		 for ( i = 0 ; i < hand.length ; i ++ ) {
 
 	         min_j = i;   // Assume elem i (h[i]) is the minimum
 
