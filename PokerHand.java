@@ -1,4 +1,6 @@
 
+/* REEEE doesn't account for both having pair */
+
 public class PokerHand {
 	public static int ROYFLUSH = 10;
 	public static int FOUR = 9;

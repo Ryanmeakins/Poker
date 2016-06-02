@@ -4,13 +4,13 @@ public class Test {
 	public static void main(String[] args) {
 		Deck foo = new Deck();
 		System.out.println(foo);
-		System.out.println(foo.deal());
+		//System.out.println(foo.deal());
 		foo.betterShuffle();
 		System.out.println(foo);
 		System.out.println(foo.deal());
 		
-		Player bob = new Player("Bob", 5);
-		Player sue = new Player("Sue", 5);
+		Player bob = new Player( "Bob", 5, 1000 );
+		Player sue = new Player( "Sue", 5, 1000 );
 		bob.Deal(foo);
 		sue.Deal(foo);
 		
@@ -18,7 +18,7 @@ public class Test {
 		bob.DisplayHand();
 		sue.DisplayHand();
 		
-		
+		/*
 		Card[] flush = new Card[5];
 		System.out.println("FLUSH HAND");
 		for( int i = 0; i<5; i++ ){
@@ -72,10 +72,27 @@ public class Test {
 		pair[2] = new Card( Card.Suit.DIAMOND, Card.Rank.A);
 		pair[3] = new Card( Card.Suit.SPADE, Card.Rank.K);
 		pair[4] = new Card( Card.Suit.CLUB, Card.Rank.THREE);
+		*/
 		
 		int valBob = PokerHand.handValue( bob.getHand() );
 		System.out.println( "\nBob's value " + valBob );
+		bob.DisplayHand();
 		
+		int valSue = PokerHand.handValue( sue.getHand() );
+		System.out.println( "Sue's value " + valSue );
+		sue.DisplayHand();
+		
+		if( valBob > valSue ) {
+			System.out.println("Bob wins!!");
+		}
+		else if( valSue > valBob ) {
+			System.out.println("Sue wins!!");
+		}
+		else {
+			System.out.println("Its a draw partner");
+		}
+		
+		/*
 		int valFours = PokerHand.handValue( four );
 		System.out.println( "Fours value " + valFours );
 		
@@ -96,6 +113,7 @@ public class Test {
 		
 		int valPair = PokerHand.handValue( pair );
 		System.out.println( "pair value " + valPair );
+		*/
 	}
 
 }

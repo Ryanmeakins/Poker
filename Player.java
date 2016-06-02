@@ -5,9 +5,10 @@ public class Player {
 	private Card[] hand;
 	private int stack; // number of chips should be int? should be private?
 	
-	public Player( String name, int handSize) {
+	public Player( String name, int handSize, int startingStack ) {
 		this.name = name;
 		this.handSize = handSize;
+		stack = startingStack;
 		hand = new Card[handSize];
 	}
 	
