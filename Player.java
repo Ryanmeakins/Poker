@@ -3,6 +3,7 @@ public class Player {
 	private final int handSize;
 	private final String name;
 	private Card[] hand;
+	private int stack; // number of chips should be int? should be private?
 	
 	public Player( String name, int handSize) {
 		this.name = name;
@@ -26,5 +27,22 @@ public class Player {
 	
 	public Card[] getHand() {
 		return hand;
+	}
+	
+	public void setStack(int stack) {
+		 this.stack  = stack;
+	}
+	
+	public int getStack() {
+		return ( stack );
+	}
+	
+	public void bet( int amount ) {
+		if( amount > stack ) {
+			throw new IllegalArgumentException("Not enough money");
+		}
+		else {
+			stack -= amount;
+		}
 	}
 }

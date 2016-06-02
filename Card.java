@@ -1,10 +1,10 @@
 
 public class Card {
    public enum Suit {
-      CLUB("c"),
-      DIAMOND("d"),
-      SPADE("s"),
-      HEART("h");
+      CLUB("C"),
+      DIAMOND("D"),
+      SPADE("S"),
+      HEART("H");
  
       private final String mNiceName;
       private Suit(final String niceName) {
@@ -17,15 +17,15 @@ public class Card {
    }
    public enum Rank {
       A(14),
-      u2(2),
-      u3(3),
-      u4(4),
-      u5(5),
-      u6(6),
-      u7(7),
-      u8(8),
-      u9(9),
-      u10(10),
+      TWO(2),
+      THREE(3),
+      FOUR(4),
+      FIVE(5),
+      SIX(6),
+      SEVEN(7),
+      EIGHT(8),
+      NINE(9),
+      TEN(10),
       J(11),
       Q(12),
       K(13);
@@ -61,7 +61,7 @@ public class Card {
    }
  
    public String toString() {
-      return ( mRank.name() + mSuit.niceName() + "," );
+      return ( mRank.name() + " " + mSuit.niceName() + "," );
    }
    
    /*public String toString() {

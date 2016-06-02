@@ -40,31 +40,32 @@ public class Test {
 		Card[] four = new Card[5];
 		four[0] = new Card( Card.Suit.CLUB, Card.Rank.A);
 		four[1] = new Card( Card.Suit.HEART, Card.Rank.A);
-		four[2] = new Card( Card.Suit.DIAMOND, Card.Rank.A);
+		four[2] = new Card( Card.Suit.DIAMOND, Card.Rank.THREE);
 		four[3] = new Card( Card.Suit.SPADE, Card.Rank.A);
-		four[4] = new Card( Card.Suit.CLUB, Card.Rank.u3);
+		four[4] = new Card( Card.Suit.CLUB, Card.Rank.A);
 		
 		Card[] house = new Card[5];
 		house[0] = new Card( Card.Suit.CLUB, Card.Rank.A);
-		house[1] = new Card( Card.Suit.HEART, Card.Rank.A);
+		house[1] = new Card( Card.Suit.HEART, Card.Rank.THREE);
 		house[2] = new Card( Card.Suit.DIAMOND, Card.Rank.A);
-		house[3] = new Card( Card.Suit.SPADE, Card.Rank.u3);
-		house[4] = new Card( Card.Suit.CLUB, Card.Rank.u3);
+		house[3] = new Card( Card.Suit.SPADE, Card.Rank.THREE);
+		house[4] = new Card( Card.Suit.CLUB, Card.Rank.THREE);
 		
-		int valFlush = PokerHand.handValue( flush );
-		System.out.println( "\nflush value " + valFlush );
 		
 		int valBob = PokerHand.handValue( bob.getHand() );
-		System.out.println( "Bob's value " + valBob );
-		
-		int valStraight = PokerHand.handValue( straight );
-		System.out.println( "Straight value " + valStraight );
+		System.out.println( "\nBob's value " + valBob );
 		
 		int valFours = PokerHand.handValue( four );
 		System.out.println( "Fours value " + valFours );
 		
 		int valHouse = PokerHand.handValue( house );
 		System.out.println( "House value " + valHouse );
+		
+		int valFlush = PokerHand.handValue( flush );
+		System.out.println( "Flush value " + valFlush );
+		
+		int valStraight = PokerHand.handValue( straight );
+		System.out.println( "Straight value " + valStraight );
 	}
 
 }
