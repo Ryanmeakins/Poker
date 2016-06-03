@@ -2,37 +2,58 @@
 /* REEEE doesn't account for both having pair */
 
 public class PokerHand {
-	public static int ROYFLUSH = 10;
-	public static int FOUR = 9;
-	public static int HOUSE = 8;
-	public static int FLUSH = 7;
-	public static int STRAIGHT = 6;
-	public static int SET = 5;
-	public static int TWOP = 4;
-	public static int PAIR = 3;
+	public static int FOURTPFIVE = 537824;
+	public static int STRAIGHTF = 10 * FOURTPFIVE;
+	public static int FOUR = 9 * FOURTPFIVE;
+	public static int HOUSE = 8 * FOURTPFIVE;
+	public static int FLUSH = 7 * FOURTPFIVE;
+	public static int STRAIGHT = 6 * FOURTPFIVE;
+	public static int SET = 5 * FOURTPFIVE;
+	public static int TWOP = 4 * FOURTPFIVE;
+	public static int PAIR = 3 * FOURTPFIVE;
 	
 	public static int handValue( Card[] hand) {
 		int val = 0;
-		if( isFours( hand ) ) {
-			val = FOUR;
+		if( isStraight( hand ) && isFlush( hand ) ) {
+			val = STRAIGHTF + hand[4].rank().value();
+		}
+		else if( isFours( hand ) ) {
+			val = FOUR  + hand[2].rank().value();
 		}
 		else if( isFullHouse( hand ) ){
-			val = HOUSE;
+			val = HOUSE + hand[2].rank().value();
 		}
 		else if( isFlush( hand ) ){
-			val = FLUSH;
+			val = FLUSH + hand[0].rank().value() + 14*hand[1].rank().value()
+					+ 14*14*hand[2].rank().value() + 14*14*14*hand[3].rank().value()
+					+ 14*14*14*14*hand[4].rank().value();
 		}
 		else if( isStraight( hand ) ) {
-			val = STRAIGHT;
+			val = STRAIGHT + hand[4].rank().value();
 		}
 		else if( isSet( hand ) ) {
-			val = SET;
+			val = SET + hand[2].rank().value();
 		}
 		else if( isTwop( hand ) ) {
-			val = TWOP;
+			if ( hand[0].rank().value() == hand[1].rank().value() &&
+					hand[2].rank() == hand[3].rank() ) {
+			         val = 14*14*hand[2].rank().value() + 14*hand[0].rank().value() + hand[4].rank().value();
+			}
+			else if ( hand[0].rank().value() == hand[1].rank().value() &&
+			                hand[3].rank().value() == hand[4].rank().value() ) {
+			         val = 14*14*hand[3].rank().value() + 14*hand[0].rank().value() + hand[2].rank().value();
+			}
+			else {
+			         val = 14*14*hand[3].rank().value() + 14*hand[1].rank().value() + hand[0].rank().value();
+			}
+
+			val += TWOP;
 		}
 		else if( isPair( hand ) ) {
 			val = PAIR;
+		}
+		else {
+			val = hand[4].rank().value();
 		}
 		return val;
 	}
