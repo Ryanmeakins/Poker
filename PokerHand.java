@@ -50,7 +50,23 @@ public class PokerHand {
 			val += TWOP;
 		}
 		else if( isPair( hand ) ) {
-			val = PAIR;
+			if ( hand[0].rank().value() == hand[1].rank().value() ) {
+		         val = 14*14*14*hand[0].rank().value() +  
+		                + hand[2].rank().value() + 14*hand[3].rank().value() + 14*14*hand[4].rank().value();
+			}
+		    else if ( hand[1].rank().value() == hand[2].rank().value() ) {
+		         val = 14*14*14*hand[1].rank().value() +  
+		                + hand[0].rank().value() + 14*hand[3].rank().value() + 14*14*hand[4].rank().value();
+		    }
+		    else if ( hand[2].rank().value() == hand[3].rank().value() ) {
+		         val = 14*14*14*hand[2].rank().value() +  
+		                + hand[0].rank().value() + 14*hand[1].rank().value() + 14*14*hand[4].rank().value();
+		    }
+		    else {
+		         val = 14*14*14*hand[3].rank().value() +  
+		                + hand[0].rank().value() + 14*hand[1].rank().value() + 14*14*hand[2].rank().value();
+		    }
+			val += PAIR;
 		}
 		else {
 			val = hand[4].rank().value();
