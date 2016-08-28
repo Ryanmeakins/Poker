@@ -1,7 +1,7 @@
 
 public class Player {
 	private final int handSize;
-	public final String name;
+	private final String name;
 	private Card[] hand;
 	private int stack; // number of chips should be int?
 	
@@ -19,7 +19,7 @@ public class Player {
 	}
 	
 	public void DisplayHand() {
-		System.out.println( name + "'s hand is:");
+		System.out.println( name );
 		for( int i = 0; i < handSize; i++ ) {
 			System.out.print( hand[i] + " ");
 		}	
